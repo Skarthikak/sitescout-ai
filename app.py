@@ -275,7 +275,7 @@ if st.session_state['analysis_active']:
         c_final1, c_final2 = st.columns([3, 1])
         c_final1.info(f"**Strategic Verdict:** To cover your rent of ₹{fin['costs']['Rent']:,.0f}, you need to sell **{int(fin['costs']['Rent']/(ticket*0.3))} units** monthly. Ensure your marketing plan targets the {len(df[df['Category']=='Corporate'])} corporate offices nearby.")
         
-        pdf_bytes = create_investor_deck(addr, df, fin, {'capex':capex, 'orders':orders})
+        pdf_bytes = create_investor_deck(addr, fin, {'orders':orders}, {'capex':capex})
         c_final2.download_button("📥 Download 3-Page Dossier", data=pdf_bytes, file_name=f"SiteScout_Dossier_{addr.split(',')[0]}.pdf", mime="application/pdf", type="primary", use_container_width=True)
 
     else:
